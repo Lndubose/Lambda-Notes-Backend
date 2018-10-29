@@ -9,5 +9,5 @@ module.exports = {
 };
 
 function getNotes() {
-  return db('messages');
+  return db('notes');
 }

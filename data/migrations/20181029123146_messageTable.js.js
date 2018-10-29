@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('messages', function(tbl) {
+  return knex.schema.createTable('notes', function(tbl) {
     tbl.increments('_id');
 
     tbl.string('title', 100);
@@ -8,5 +8,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('messages');
+  return knex.schema.dropTableIfExists('notes');
 };
