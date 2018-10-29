@@ -3,10 +3,10 @@ const request = require('supertest');
 const server = require('./api/server.js');
 
 describe('server', () => {
-  afterEach(() => {
-    server.db.dropDatabase();
-    console.log('runnning');
-  });
+  // afterEach(() => {
+  //   server.db.dropDatabase();
+  //   console.log('runnning');
+  // });
 
   describe('GET /api/notes', () => {
     it('if running correctly should get status 200(Ok)', async () => {

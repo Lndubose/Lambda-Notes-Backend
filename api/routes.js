@@ -3,6 +3,17 @@ const db = require('./db.js');
 
 const router = express();
 
+//==== MIDDLEWARE ====
+const requiredProperties = (req, res, next) => {
+  const { title, textBody } = req.body;
+  if (title && textBody) {
+    next();
+  } else {
+    res.status(400).json({ errorMessage: 'Missing title or textBody' });
+  }
+};
+
+// ==== ENDPOINTS ====
 router.get('/notes', (req, res) => {
   db.getNotes()
     .then(notes => {
@@ -13,9 +24,9 @@ router.get('/notes', (req, res) => {
       }
     })
     .catch(err => res.status(500).json(`Server error --> ${err}`));
-});
+}); //End of GET
 
-router.post('/notes', (req, res) => {
+router.post('/notes', requiredProperties, (req, res) => {
   const newNote = req.body;
 
   db.createNote(newNote)
@@ -23,12 +34,8 @@ router.post('/notes', (req, res) => {
       res.status(201).json({ newNoteId: ids[0] });
     })
     .catch(err => {
-      if (err.errno === 19) {
-        res.status(400).json({ errorMessage: 'Missing title or textBody' });
-      } else {
-        res.status(500).json(`Server error --< ${err}`);
-      }
+      res.status(500).json(`Server error --< ${err}`);
     });
-});
+}); //End of Post
 
 module.exports = router;
