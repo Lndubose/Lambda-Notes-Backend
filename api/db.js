@@ -7,6 +7,7 @@ const db = knex(knexConfig.development);
 module.exports = {
   getNotes,
   createNote,
+  deleteNote,
 };
 
 function getNotes() {
@@ -17,4 +18,10 @@ function createNote(note) {
   return db('notes')
     .insert(note)
     .into('notes');
+}
+
+function deleteNote(id) {
+  return db('notes')
+    .where({ _id: id })
+    .del();
 }

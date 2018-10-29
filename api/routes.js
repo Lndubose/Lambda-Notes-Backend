@@ -38,4 +38,18 @@ router.post('/notes', requiredProperties, (req, res) => {
     });
 }); //End of Post
 
+router.delete('/notes/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.deleteNote(id)
+    .then(response => {
+      if (response) {
+        res.status(200).json({ message: 'Note Deleted' });
+      } else {
+        res.status(404).json({ errorMessage: 'Id was not found.' });
+      }
+    })
+    .catch(err => res.status(500).json(`Server error --> ${err}`));
+}); //End of delete
+
 module.exports = router;
