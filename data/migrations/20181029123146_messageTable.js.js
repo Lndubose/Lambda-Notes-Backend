@@ -4,7 +4,6 @@ exports.up = function(knex, Promise) {
 
     tbl.string('title', 100);
     tbl.string('textBody', 2000);
-    tbl.enu('tags', []);
   });
 };
 
