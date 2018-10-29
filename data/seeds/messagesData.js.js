@@ -24,6 +24,12 @@ exports.seed = function(knex, Promise) {
           textBody:
             'Who is there? \n Cows go \n Cows go who? \n No cows go moo.',
         },
+        {
+          tags: [],
+          _id: '3',
+          title: 'Hi',
+          textBody: "What's up?",
+        },
       ]);
     });
 };
