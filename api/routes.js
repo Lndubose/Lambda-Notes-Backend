@@ -82,6 +82,6 @@ router.put('/notes/:id', requiredProperties, (req, res) => {
       }
     })
     .catch(err => res.status(500).json(`Server error --> ${err}`));
-});
+}); //End of PUT
 
 module.exports = router;
