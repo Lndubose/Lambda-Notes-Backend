@@ -8,10 +8,17 @@ module.exports = {
   getNotes,
   createNote,
   deleteNote,
+  getANote,
 };
 
 function getNotes() {
   return db('notes');
+}
+
+function getANote(id) {
+  return db('notes')
+    .where({ _id: id })
+    .first();
 }
 
 function createNote(note) {

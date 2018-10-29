@@ -24,7 +24,24 @@ router.get('/notes', (req, res) => {
       }
     })
     .catch(err => res.status(500).json(`Server error --> ${err}`));
-}); //End of GET
+}); //End of GET notes
+
+router.get('/notes/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.getANote(id)
+    .then(note => {
+      if (note) {
+        res.status(200).json(note);
+      } else {
+        res.status(404).json({ errorMessage: 'Id not found' });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(`Server error --> ${err}`);
+    });
+}); //End of GET a note
 
 router.post('/notes', requiredProperties, (req, res) => {
   const newNote = req.body;
@@ -36,7 +53,7 @@ router.post('/notes', requiredProperties, (req, res) => {
     .catch(err => {
       res.status(500).json(`Server error --< ${err}`);
     });
-}); //End of Post
+}); //End of POST
 
 router.delete('/notes/:id', (req, res) => {
   const { id } = req.params;
@@ -50,6 +67,6 @@ router.delete('/notes/:id', (req, res) => {
       }
     })
     .catch(err => res.status(500).json(`Server error --> ${err}`));
-}); //End of delete
+}); //End of DELETE
 
 module.exports = router;
