@@ -15,4 +15,20 @@ router.get('/notes', (req, res) => {
     .catch(err => res.status(500).json(`Server error --> ${err}`));
 });
 
+router.post('/notes', (req, res) => {
+  const newNote = req.body;
+
+  db.createNote(newNote)
+    .then(ids => {
+      res.status(201).json({ newNoteId: ids[0] });
+    })
+    .catch(err => {
+      if (err.errno === 19) {
+        res.status(400).json({ errorMessage: 'Missing title or textBody' });
+      } else {
+        res.status(500).json(`Server error --< ${err}`);
+      }
+    });
+});
+
 module.exports = router;
