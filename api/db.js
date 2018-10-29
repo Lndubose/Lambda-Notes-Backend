@@ -11,3 +11,9 @@ module.exports = {
 function getNotes() {
   return db('notes');
 }
+
+function createNote(note) {
+  return db('notes')
+    .insert(note)
+    .into('notes');
+}
