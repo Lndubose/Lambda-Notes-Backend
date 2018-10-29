@@ -69,4 +69,19 @@ router.delete('/notes/:id', (req, res) => {
     .catch(err => res.status(500).json(`Server error --> ${err}`));
 }); //End of DELETE
 
+router.put('/notes/:id', requiredProperties, (req, res) => {
+  const { id } = req.params;
+  const note = req.body;
+
+  db.editNote(id, note)
+    .then(response => {
+      if (response) {
+        res.status(200).json({ message: 'Noted edited ' });
+      } else {
+        res.status(404).json({ errorMessage: 'Id not found' });
+      }
+    })
+    .catch(err => res.status(500).json(`Server error --> ${err}`));
+});
+
 module.exports = router;

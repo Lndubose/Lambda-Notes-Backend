@@ -9,6 +9,7 @@ module.exports = {
   createNote,
   deleteNote,
   getANote,
+  editNote,
 };
 
 function getNotes() {
@@ -31,4 +32,10 @@ function deleteNote(id) {
   return db('notes')
     .where({ _id: id })
     .del();
+}
+
+function editNote(id, note) {
+  return db('notes')
+    .where({ _id: id })
+    .update(note);
 }
