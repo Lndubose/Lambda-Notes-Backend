@@ -45,7 +45,7 @@ router.get('/notes/:id', (req, res) => {
 
 router.post('/notes', requiredProperties, (req, res) => {
   const newNote = req.body;
-
+  console.log(newNote);
   db.createNote(newNote)
     .then(ids => {
       res.status(201).json({ newNoteId: ids[0] });
