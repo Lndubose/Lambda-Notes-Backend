@@ -76,7 +76,9 @@ router.put('/notes/:id', requiredProperties, (req, res) => {
   db.editNote(id, note)
     .then(response => {
       if (response) {
-        res.status(200).json({ message: 'Noted edited ' });
+        res
+          .status(200)
+          .json({ message: 'Noted edited ', note: { ...req.body, _id: id } });
       } else {
         res.status(404).json({ errorMessage: 'Id not found' });
       }
