@@ -16,16 +16,16 @@ describe('server', () => {
     });
   });
 
-  // describe('POST /api/notes', () => {
-  //   it('if running correctly should get status 201(Created)', async () => {
-  //     const body = { title: 'hi', textBody: 'Howdy' };
-  //     const response = await request(server)
-  //       .post('/api/notes')
-  //       .send(body);
+  describe('POST /api/notes', () => {
+    it('if running correctly should get status 201(Created)', async () => {
+      const body = { title: 'hi', textBody: 'Howdy' };
+      const response = await request(server)
+        .post('/api/notes')
+        .send(body);
 
-  //     expect(response.status).toBe(201);
-  //   });
-  // });
+      expect(response.status).toBe(201);
+    });
+  });
 
   describe('server running', () => {
     it('server running', () => {
