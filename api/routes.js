@@ -38,17 +38,14 @@ router.get('/notes/:id', (req, res) => {
       }
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(`Server error --> ${err}`);
     });
 }); //End of GET a note
 
 router.post('/notes', requiredProperties, (req, res) => {
   const newNote = req.body;
-  console.log(newNote);
   db.createNote(newNote)
     .then(ids => {
-      console.log('response', ids);
       res.status(201).json({ newNoteId: ids[0] });
     })
     .catch(err => {
