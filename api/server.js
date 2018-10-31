@@ -8,4 +8,8 @@ const server = express();
 server.use(express.json(), helmet(), cors());
 server.use('/api', Routes);
 
+server.get('/', (req, res) => {
+  res.send('Running');
+});
+
 module.exports = server;
