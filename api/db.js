@@ -23,6 +23,7 @@ function getANote(id) {
 //Creates a new note
 function createNote(note) {
   return db('notes')
+    .returning('_id')
     .insert(note)
     .into('notes');
 }
