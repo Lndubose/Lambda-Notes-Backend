@@ -48,12 +48,8 @@ router.post('/notes', requiredProperties, (req, res) => {
   console.log(newNote);
   db.createNote(newNote)
     .then(ids => {
-      return db
-        .getNotes()
-        .then(response => console.log(response))
-        .catch(err => console.log(err));
-      // console.log('response', ids);
-      // res.status(201).json({ newNoteId: ids[0] });
+      console.log('response', ids);
+      res.status(201).json({ newNoteId: ids[0] });
     })
     .catch(err => {
       res.status(500).json(`Server error --< ${err}`);
