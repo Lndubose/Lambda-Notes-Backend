@@ -23,7 +23,6 @@ function getANote(id) {
 //Creates a new note
 function createNote(note) {
   return db('notes')
-    .returning('id')
     .insert(note)
     .into('notes');
 }
