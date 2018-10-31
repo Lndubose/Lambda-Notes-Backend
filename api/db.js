@@ -1,8 +1,4 @@
-const express = require('express');
-
-const knex = require('knex');
-const knexConfig = require('../knexfile.js');
-const db = knex(knexConfig.development);
+const db = require('../data/config.js');
 
 module.exports = {
   getNotes,
