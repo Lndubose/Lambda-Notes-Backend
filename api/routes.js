@@ -46,7 +46,7 @@ router.post('/notes', requiredProperties, (req, res) => {
   const newNote = req.body;
   db.createNote(newNote)
     .then(ids => {
-      res.status(201).json({ message: 'Post created' });
+      res.status(201).json({ message: 'Note created', _id: ids[0] });
     })
     .catch(err => {
       res.status(500).json(`Server error --< ${err}`);
