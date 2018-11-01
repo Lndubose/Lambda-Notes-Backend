@@ -1,4 +1,4 @@
-#Lambda Notes API 
+# Lambda Notes API 
 
 - A server that will deliver notes to the user from this [url](https://lambda-notes-board.herokuapp.com/).
 
@@ -14,33 +14,33 @@ everyone using the server.
 ```
 -There is an "_id" attribute provided by the server, which is just a number that will be returned as part of the data.
 
-##GET
+## GET
 
-###https://lambda-notes-board.herokuapp.com/api/notes
+### https://lambda-notes-board.herokuapp.com/api/notes
 
 a 'GET' request to this route will return all of the notes.
 
-###https://lambda-notes-board.herokuapp.com/api/notes/id
+### https://lambda-notes-board.herokuapp.com/api/notes/id
 
 a 'GET' request to this route with the id being the note ID will return the note.
 
-##POST
+## POST
 
-###https://lambda-notes-board.herokuapp.com/api/notes
+### https://lambda-notes-board.herokuapp.com/api/notes
 
 a 'POST' request to this route with the title and textBody in the req.body will create a new note in the server.
 The response will be a message saying "Note created" and it will return the "_id" for the note created.
 
-##DELETE
+## DELETE
 
-###https://lambda-notes-board.herokuapp.com/api/notes/id
+### https://lambda-notes-board.herokuapp.com/api/notes/id
 
 a 'DELETE' request to this route with the id being the note ID will delelte the note.
 The response will be a message saying "Note Deleted".
 
-##PUT
+## PUT
 
-###https://lambda-notes-board.herokuapp.com/api/notes/id
+### https://lambda-notes-board.herokuapp.com/api/notes/id
 
 a 'PUT' request to this route with the id being the note ID and a title and textBody in the req.body will edit the note in the server. 
 The response will be a message saying "Note edited" and the edited note.
